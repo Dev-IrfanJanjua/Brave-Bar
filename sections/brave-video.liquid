@@ -9,6 +9,10 @@
   background-color: {{ section.settings.section_bg }};
 }
 
+.section-{{ section_id }} .page-width{
+  position: relative;
+}
+
 .section-{{ section_id }} .brave-video-wrapper {
   display: flex;
   flex-direction: column;
@@ -54,6 +58,10 @@
   aspect-ratio: 1/1.2;
 }
 
+.new-design .section-{{ section_id }} .brave-video-block{
+  aspect-ratio: 0.66;
+}
+
 .section-{{ section_id }} .brave-video-block video {
   width: 100%;
   height: 100%;
@@ -95,6 +103,41 @@
 }
 
 
+.section-{{ section_id }} .swiper-pagination.brave-video-pagination {
+    position: static;
+    margin-top: 50px;
+}
+
+.section-{{ section_id }} .swiper-pagination.brave-video-pagination span.swiper-pagination-bullet {
+    background: #D67A2C;
+    opacity: 0.8;
+    transition: max-width 0.3s ease;
+}
+
+.section-{{ section_id }} .swiper-pagination.brave-video-pagination span.swiper-pagination-bullet.swiper-pagination-bullet-active {
+    max-width: 23px;
+    width: 100%;
+    border-radius: 8px;
+    opacity: 1;
+}
+
+.section-{{ section_id }} .brave-video-button:after {
+    display: none;
+}
+
+.section-{{ section_id }} .brave-video-button {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.section-{{ section_id }} .brave-video-button img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
 @media screen and (max-width: 768px) {
   .section-{{ section_id }} {
     padding-top: {{ section.settings.padding_top_mobile }}px;
@@ -108,6 +151,23 @@
     .section-{{ section_id }} .brave-video-title {
         font-size: 28px;
     }
+
+    .section-{{ section_id }} .brave-video-button,
+    .section-{{ section_id }} .swiper-pagination.brave-video-pagination {
+        display: none;
+    }
+
+  {% if section.settings.mobile_layout == 'swiper' %}
+    
+    .section-{{ section_id }} .page-width {
+        padding-right: 0;
+    }
+
+    .section-{{ section_id }} .brave-video-title{
+      padding-right: 16px;
+    }
+    
+  {% endif %}
 
   {% if section.settings.mobile_layout == 'grid' %}
     .section-{{ section_id }} .brave-video-slider.swiper {
@@ -130,6 +190,7 @@
         width: 32px;
         height: 32px;
     }
+
 
   {% endif %}
 }
@@ -171,10 +232,26 @@
                   </div>
                 {% endfor %}
               </div>
+              {% if section.settings.show_pagination %}
+                <div class="swiper-pagination brave-video-pagination"></div>
+              {% endif %}
             </div>
         </div>
       {% endif %}
     </div>
+
+      <div class="swiper-button-prev brave-video-button-prev brave-video-button">
+        {% if section.settings.btn_prev_icon %}
+          {{ section.settings.btn_prev_icon | image_url: width: 200 | image_tag: loading: 'lazy', alt: 'Previous' }}
+        {% endif %}
+      </div>
+      <div class="swiper-button-next brave-video-button-next brave-video-button">
+        {% if section.settings.btn_next_icon %}
+          {{ section.settings.btn_next_icon | image_url: width: 200 | image_tag: loading: 'lazy', alt: 'Next' }}
+        {% endif %}
+      </div>
+
+
   </div>
 </section>
 
@@ -190,6 +267,7 @@
       new Swiper(section.querySelector('.brave-video-slider'), {
         slidesPerView: 4,
         spaceBetween: 20,
+        speed: 1000,
         loop: false,
         breakpoints: {
           0: {
@@ -202,6 +280,14 @@
             slidesPerView: 4,
             spaceBetween: 20
           }
+        },
+        pagination: {
+          el: section.querySelector('.brave-video-pagination'),
+          clickable: true
+        },
+        navigation: {
+          nextEl: section.querySelector('.brave-video-button-next'),
+          prevEl: section.querySelector('.brave-video-button-prev')
         }
       });
     }
@@ -269,6 +355,22 @@
       "type": "image_picker",
       "id": "icon",
       "label": "Play Icon"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_pagination",
+      "label": "Show Pagination",
+      "default": false
+    },
+    {
+      "type": "image_picker",
+      "id": "btn_prev_icon",
+      "label": "Previous Button Icon"
+    },
+    {
+      "type": "image_picker",
+      "id": "btn_next_icon",
+      "label": "Next Button Icon"
     },
     {
       "type": "select",

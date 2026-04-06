@@ -1,0 +1,137 @@
+{% style %}
+  .section-{{ section.id }} {
+    background-color: {{ section.settings.background_color }};
+    padding-top: {{ section.settings.padding_top_desktop }}px;
+    padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+  }
+
+  .section-{{ section.id }} .richtext-section__heading {
+    font-family: "Kefir Bold";
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: 0;
+    text-align: center;
+    text-transform: uppercase;
+    color: #000000;
+    max-width: 923px;
+    margin: 0 auto;
+  }
+
+  .section-{{ section.id }} .richtext-section__heading em {
+    color: #D5792B;
+    font-style: normal;
+  }
+
+  @media screen and (max-width: 749px) {
+    .section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+
+    .section-{{ section.id }} .richtext-section__heading {
+        font-size: 24px;
+        line-height: 32px;
+    }
+
+  }
+{% endstyle %}
+
+<section class="section-{{ section.id }} richtext-section">
+  <div class="page-width">
+    {% case section.settings.heading_tag %}
+      {% when 'h1' %}
+        <h1 class="richtext-section__heading">{{ section.settings.heading }}</h1>
+      {% when 'h2' %}
+        <h2 class="richtext-section__heading">{{ section.settings.heading }}</h2>
+      {% when 'h3' %}
+        <h3 class="richtext-section__heading">{{ section.settings.heading }}</h3>
+    {% endcase %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Richtext Section",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "<em>Richtext</em> Section"
+    },
+    {
+      "type": "select",
+      "id": "heading_tag",
+      "label": "Heading Tag",
+      "default": "h2",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Desktop Padding Top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Desktop Padding Bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Mobile Padding Top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Mobile Padding Bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+  "presets": [
+    {
+      "name": "Richtext Section",
+      "category": "Brave bar"
+    }
+  ]
+}
+{% endschema %}

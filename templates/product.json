@@ -99,10 +99,92 @@
         "padding_top": 36,
         "padding_bottom": 28
       }
+    },
+    "brave_comparison_TRn3KM": {
+      "type": "brave-comparison",
+      "blocks": {
+        "row_4qyjcc": {
+          "type": "row",
+          "settings": {
+            "left_content": "Typical Protein Bars",
+            "right_content": "Built around real ingredients"
+          }
+        },
+        "row_4RPmnc": {
+          "type": "row",
+          "settings": {
+            "left_content": "Syrups + artificial sweetners",
+            "right_content": "Raw honey + dates"
+          }
+        },
+        "row_C43Xy8": {
+          "type": "row",
+          "settings": {
+            "left_content": "Seed oils or animal fats",
+            "right_content": "No seed oils. No tallow."
+          }
+        },
+        "row_WMkcii": {
+          "type": "row",
+          "settings": {
+            "left_content": "Lower protein",
+            "right_content": "23g grass-fed protein"
+          }
+        },
+        "row_mV98fa": {
+          "type": "row",
+          "settings": {
+            "left_content": "Lower calories",
+            "right_content": "341 calories of real‑food energy"
+          }
+        },
+        "row_TEXr8h": {
+          "type": "row",
+          "settings": {
+            "left_content": "Low fiber",
+            "right_content": "7g prebiotic fiber from agave inulin"
+          }
+        },
+        "row_aXXMrC": {
+          "type": "row",
+          "settings": {
+            "left_content": "Designed as a snack",
+            "right_content": "Built to satisfy"
+          }
+        }
+      },
+      "block_order": [
+        "row_4qyjcc",
+        "row_4RPmnc",
+        "row_C43Xy8",
+        "row_WMkcii",
+        "row_mV98fa",
+        "row_TEXr8h",
+        "row_aXXMrC"
+      ],
+      "name": "Brave Comparison",
+      "settings": {
+        "heading": "NOT YOUR TYPICAL <em>PROTEIN BAR</em>",
+        "heading_tag": "h2",
+        "heading_size_desktop": 48,
+        "heading_size_mobile": 28,
+        "heading_left": "Typical Protein Bars",
+        "heading_right": "",
+        "heading_right_image": "shopify://shop_images/Frame_1707479761_1.png",
+        "heading_right_image_absolute": "shopify://shop_images/cb14965112522fb9aab3fcdb7028f6aae71c776d.png",
+        "section_bg": "#ffffff",
+        "left_bg": "#faebd9",
+        "right_bg": "#d5792b",
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 80,
+        "padding_top_mobile": 48,
+        "padding_bottom_mobile": 48
+      }
     }
   },
   "order": [
     "main",
-    "related-products"
+    "related-products",
+    "brave_comparison_TRn3KM"
   ]
 }

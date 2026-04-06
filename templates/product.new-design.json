@@ -1,0 +1,348 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "vendor": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.vendor }}",
+            "text_style": "uppercase"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "share": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        }
+      },
+      "block_order": [
+        "vendor",
+        "title",
+        "price",
+        "variant_picker",
+        "quantity_selector",
+        "buy_buttons",
+        "description",
+        "share"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": "scheme-1",
+        "media_size": "large",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "stacked",
+        "mobile_thumbnails": "hide",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 12
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "disabled": true,
+      "settings": {
+        "heading": "You may also like",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    },
+    "brave_comparison_TRn3KM": {
+      "type": "brave-comparison",
+      "blocks": {
+        "row_4qyjcc": {
+          "type": "row",
+          "settings": {
+            "left_content": "Typical Protein Bars",
+            "right_content": "Built around real ingredients"
+          }
+        },
+        "row_4RPmnc": {
+          "type": "row",
+          "settings": {
+            "left_content": "Syrups + artificial sweetners",
+            "right_content": "Raw honey + dates"
+          }
+        },
+        "row_C43Xy8": {
+          "type": "row",
+          "settings": {
+            "left_content": "Seed oils or animal fats",
+            "right_content": "No seed oils. No tallow."
+          }
+        },
+        "row_WMkcii": {
+          "type": "row",
+          "settings": {
+            "left_content": "Lower protein",
+            "right_content": "23g grass-fed protein"
+          }
+        },
+        "row_mV98fa": {
+          "type": "row",
+          "settings": {
+            "left_content": "Lower calories",
+            "right_content": "341 calories of real‑food energy"
+          }
+        },
+        "row_TEXr8h": {
+          "type": "row",
+          "settings": {
+            "left_content": "Low fiber",
+            "right_content": "7g prebiotic fiber from agave inulin"
+          }
+        },
+        "row_aXXMrC": {
+          "type": "row",
+          "settings": {
+            "left_content": "Designed as a snack",
+            "right_content": "Built to satisfy"
+          }
+        }
+      },
+      "block_order": [
+        "row_4qyjcc",
+        "row_4RPmnc",
+        "row_C43Xy8",
+        "row_WMkcii",
+        "row_mV98fa",
+        "row_TEXr8h",
+        "row_aXXMrC"
+      ],
+      "name": "Brave Comparison",
+      "settings": {
+        "heading": "NOT YOUR TYPICAL <em>PROTEIN BAR</em>",
+        "heading_tag": "h2",
+        "heading_size_desktop": 48,
+        "heading_size_mobile": 28,
+        "heading_left": "Typical Protein Bars",
+        "heading_right": "",
+        "heading_right_image": "shopify://shop_images/Frame_1707479761_1.png",
+        "heading_right_image_absolute": "shopify://shop_images/cb14965112522fb9aab3fcdb7028f6aae71c776d.png",
+        "section_bg": "#ffffff",
+        "left_bg": "#faebd9",
+        "right_bg": "#d5792b",
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 80,
+        "padding_top_mobile": 48,
+        "padding_bottom_mobile": 48
+      }
+    },
+    "brave_video_X7qiVL": {
+      "type": "brave-video",
+      "blocks": {
+        "video_block_8j3txR": {
+          "type": "video_block",
+          "settings": {
+            "video": "shopify://files/videos/💎 This woman reimagined chocolate by turning it into something that looks like a rare gemstone,.mp4"
+          }
+        },
+        "video_block_4VXGjD": {
+          "type": "video_block",
+          "settings": {
+            "video": "shopify://files/videos/Шоколадні батончики з горішками та ягодами. Набір 6 батончиків в подарунковому пакуванні. - моло.mp4"
+          }
+        },
+        "video_block_taVgcY": {
+          "type": "video_block",
+          "settings": {
+            "video": "shopify://files/videos/Красивые дизайнерские шоколады, созданные из настоящего бельгийского шоколада, — это идеальный п.mp4"
+          }
+        },
+        "video_block_rX9CjV": {
+          "type": "video_block",
+          "settings": {
+            "video": "shopify://files/videos/New reel for Olmec Chocolates! Wanted to capture the richness of chocolate, combining it with sm.mp4"
+          }
+        },
+        "video_block_eztTqG": {
+          "type": "video_block",
+          "settings": {
+            "video": "shopify://files/videos/💎 This woman reimagined chocolate by turning it into something that looks like a rare gemstone,.mp4"
+          }
+        },
+        "video_block_7kQpEJ": {
+          "type": "video_block",
+          "settings": {
+            "video": "shopify://files/videos/Шоколадні батончики з горішками та ягодами. Набір 6 батончиків в подарунковому пакуванні. - моло.mp4"
+          }
+        }
+      },
+      "block_order": [
+        "video_block_8j3txR",
+        "video_block_4VXGjD",
+        "video_block_taVgcY",
+        "video_block_rX9CjV",
+        "video_block_eztTqG",
+        "video_block_7kQpEJ"
+      ],
+      "name": "Brave Video Section",
+      "settings": {
+        "title": "Real <em>Reactions</em>",
+        "subtitle": "",
+        "icon": "shopify://shop_images/Button_-_Play_Video.svg",
+        "show_pagination": true,
+        "btn_prev_icon": "shopify://shop_images/Frame_2.svg",
+        "btn_next_icon": "shopify://shop_images/Frame_3.svg",
+        "mobile_layout": "swiper",
+        "overlay_opacity": 0.3,
+        "section_bg": "#ffffff",
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "richtext_section_Ei8nwa": {
+      "type": "richtext-section",
+      "name": "Richtext Section",
+      "settings": {
+        "heading": "I started Brave Bar to make <em>real ingredients </em>the standard in protein bars.",
+        "heading_tag": "h2",
+        "background_color": "#ffffff",
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 80,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "faq_section_fRQJcB": {
+      "type": "faq-section",
+      "blocks": {
+        "faq_iEKLim": {
+          "type": "faq",
+          "settings": {
+            "question": "Why do Brave Bars cost more?",
+            "answer": "<p>You can return items within 30 days.</p>"
+          }
+        },
+        "faq_6qH3kw": {
+          "type": "faq",
+          "settings": {
+            "question": "Why whey protein?",
+            "answer": "<p>You can return items within 30 days.</p>"
+          }
+        },
+        "faq_h9Tt9i": {
+          "type": "faq",
+          "settings": {
+            "question": "Do they require refrigeration?",
+            "answer": "<p>No. Brave Bars are shelf‑stable and best kept at room temperature.</p>"
+          }
+        },
+        "faq_YDwUT6": {
+          "type": "faq",
+          "settings": {
+            "question": "Why raw honey?",
+            "answer": "<p>No. Brave Bars are shelf‑stable and best kept at room temperature.</p>"
+          }
+        },
+        "faq_4XAzCD": {
+          "type": "faq",
+          "settings": {
+            "question": "Why grass-fed protein?",
+            "answer": "<p>No. Brave Bars are shelf‑stable and best kept at room temperature.</p>"
+          }
+        },
+        "faq_VXekgP": {
+          "type": "faq",
+          "settings": {
+            "question": "Do kids like Brave Bar?",
+            "answer": "<p>No. Brave Bars are shelf‑stable and best kept at room temperature.</p>"
+          }
+        },
+        "faq_GAE6Vd": {
+          "type": "faq",
+          "settings": {
+            "question": "Is Brave Bar gluten free?",
+            "answer": "<p>No. Brave Bars are shelf‑stable and best kept at room temperature.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_iEKLim",
+        "faq_6qH3kw",
+        "faq_h9Tt9i",
+        "faq_YDwUT6",
+        "faq_4XAzCD",
+        "faq_VXekgP",
+        "faq_GAE6Vd"
+      ],
+      "name": "Image FAQs",
+      "settings": {
+        "use_metafields": false,
+        "heading": "Your Questions,<em> Answered</em>",
+        "image": "shopify://shop_images/Frame_2147229813.png",
+        "bg_image_top": "shopify://shop_images/Group_1707479762.svg",
+        "bg_image_bottom": "shopify://shop_images/Frame_2147242548.svg",
+        "bg_color": "#d5792b",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mob": 24,
+        "padding_bottom_mob": 24
+      }
+    }
+  },
+  "order": [
+    "main",
+    "related-products",
+    "brave_comparison_TRn3KM",
+    "brave_video_X7qiVL",
+    "richtext_section_Ei8nwa",
+    "faq_section_fRQJcB"
+  ]
+}
