@@ -1,0 +1,285 @@
+{% liquid
+  assign section_id = section.id
+%}
+
+{% style %}
+    .section-{{ section_id }} {
+        padding-top: {{ section.settings.padding_top_desktop }}px;
+        padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+        background-color: {{ section.settings.section_bg }};
+    }
+
+    .section-{{ section_id }} .title-list-wrapper {
+        background-color: {{ section.settings.wrapper_bg }};
+        border-width: {{ section.settings.wrapper_border_width }}px;
+        border-color: {{ section.settings.wrapper_border_color }};
+        border-width: 1px;
+        border-style: solid;
+        border-radius: 20px;
+        padding: 30px 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+    }
+
+    .section-{{ section_id }} .title-list_title {
+        margin: 0 ;
+        font-family: Kefir Bold;
+        font-weight: 700;
+        font-size: 36px;
+        line-height: 46px;
+        letter-spacing: 0;
+        text-align: center;
+        text-transform: uppercase;
+        color: #152728;
+    }
+
+    h2.title-list_title.inline-richtext em {
+        color: #D5792B;
+        font-style: normal;
+    }
+
+    .section-{{ section_id }} .title-list_subtitle {
+        margin: 16px 0 0;
+        font-family: Outfit;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 24px;
+        letter-spacing: 0;
+        vertical-align: middle;
+        color: #152728;
+        text-align: center;
+    }
+
+    .section-{{ section_id }} .title-list-items {
+        margin: 0;
+        padding: 16px 0;
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        justify-content: center;
+    }
+
+    .title-list-item_icon {
+        max-width: 25px;
+        width: 100%;
+        height: 25px;
+        flex-shrink: 0;
+    }
+
+    .title-list-item_icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    li.title-list-item {
+       list-style-type: none;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+
+    span.title-list-item_text {
+        font-family: Outfit;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 22px;
+        letter-spacing: 0;
+        vertical-align: middle;
+        color: #152728;
+    }
+
+    @media screen and (max-width: 768px) {
+
+        .section-{{ section_id }} {
+            padding-top: {{ section.settings.padding_top_mobile }}px;
+            padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+        }
+
+        .section-{{ section_id }} .title-list-wrapper {
+            padding-inline: 20px;
+            gap: 16px;
+        }
+
+        .section-{{ section_id }} .title-list_title {
+            font-size: 28px;
+            line-height: 32px;
+        }
+
+        .section-{{ section_id }} .title-list-items {
+            flex-direction: column;
+            align-items: self-start;
+        }
+
+    }
+{% endstyle %}
+
+
+<section class="title-list-section section-{{ section_id }}">
+
+  <div class="page-width">
+    <div class="title-list-wrapper">
+      {% if section.settings.title != blank or section.settings.subtitle != blank %}
+        <div class="title-list-head">
+          {% if section.settings.title != blank %}
+            <h2 class="title-list_title inline-richtext">
+              {{ section.settings.title }}
+            </h2>
+          {% endif %}
+
+          {% if section.settings.subtitle != blank %}
+            <h3 class="title-list_subtitle">
+              {{ section.settings.subtitle }}
+            </h3>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      {% if section.blocks.size > 0 %}
+        <ul class="title-list-items">
+          {% for block in section.blocks %}
+            {% if block.settings.list_text != blank %}
+              <li class="title-list-item" {{ block.shopify_attributes }}>
+                <div class="title-list-item_icon">
+                    {{ section.settings.icon | image_url: width: 1600 | image_tag:
+                        widths: '50, 100, 150, 200, 250, 300, 400, 500,600,1440',
+                        alt: "image",
+                        loading: "lazy"
+                    }}
+                </div>
+                <span class="title-list-item_text">
+                    {{ block.settings.list_text }}
+                </span>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Title List",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "label": "Title",
+      "default": "Your <em>section</em> title"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Add your subtitle text here"
+    },
+    {
+        "type": "image_picker",
+        "id": "icon",
+        "label": "Select an Icon"
+    },
+    {
+      "type": "color",
+      "id": "section_bg",
+      "label": "Section background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "wrapper_bg",
+      "label": "Content wrapper background color",
+      "default": "#f8f8f8"
+    },
+    {
+      "type": "range",
+      "id": "wrapper_border_width",
+      "label": "Content wrapper border width",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "unit": "px",
+      "default": 1
+    },
+    {
+      "type": "color",
+      "id": "wrapper_border_color",
+      "label": "Content wrapper border color",
+      "default": "#d9d9d9"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Desktop padding top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Desktop padding bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Mobile padding top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Mobile padding bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "list_item",
+      "name": "List Item",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "list_text",
+          "label": "List text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Title List",
+      "category": "Brave",
+      "blocks": [
+        {
+          "type": "list_item"
+        },
+        {
+          "type": "list_item"
+        },
+        {
+          "type": "list_item"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

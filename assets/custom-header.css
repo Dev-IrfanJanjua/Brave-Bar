@@ -1,0 +1,117 @@
+.index .header-wrapper--cstm-style {
+  background: transparent;
+    border-width: 0px;
+}
+
+/* ?sticky header background color change on scroll */
+
+.scrolled-past-header {
+    background: #FCF7EC;
+}
+
+/* ! hide search icon */
+
+
+.header-wrapper--cstm-style details-modal.header__search, 
+.header-wrapper--cstm-style summary.header__icon.header__icon--search {
+    display: none !important;
+}
+
+.header-wrapper--cstm-style a.header__icon.header__icon--account, .header__icon.header__icon--cart {
+    background: #F7E4D5;
+    border-radius: 50%;
+}
+
+.header-wrapper--cstm-style .header__icons.header__icons--localization.header-localization {
+    gap: 16px;
+}
+
+.header-wrapper--cstm-style .desktop-localization-wrapper {
+    display: none;
+}
+
+.header-wrapper--cstm-style .header__icon .svg-wrapper {
+    width: 24px;
+    height: 24px;
+}
+
+.header-wrapper--cstm-style .list-menu__item:hover {
+    text-decoration: underline;
+}
+
+/* ==== menus ===== */
+
+.header-wrapper--cstm-style .list-menu__item {
+    color: #152728;
+    font-family: Outfit;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0;
+}
+
+.header-wrapper--cstm-style span.header__active-menu-item {
+    text-decoration: none;
+}
+
+.header-wrapper--cstm-style ul.list-menu.list-menu--inline {
+    gap: 32px;
+}
+
+.header-wrapper--cstm-style nav.header__inline-menu {
+    margin-right: 20%;
+}
+
+
+@media screen and (min-width: 991px) {
+  .header-wrapper--cstm-style .header.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-wrapper--cstm-style .list-menu__item{
+    padding: 0;
+}
+
+.header-wrapper--cstm-style .page-width {
+    padding-inline: 80px !important;
+}
+
+}
+
+@media screen and (max-width: 991px) {
+  .index .header-wrapper--cstm-style {
+      background: #FCF7EC;
+      border-color: #000;
+      border-width: 1px;
+  }
+
+  .header-wrapper--cstm-style a.header__icon.header__icon--account.link.focus-inset.small-hide {
+    display: flex !important;
+}
+
+.header-wrapper--cstm-style a.header__icon.header__icon--account, .header__icon.header__icon--cart {
+    width: 20px;
+    height: 20px;
+    background: transparent;
+}
+
+.header-wrapper--cstm-style a.header__icon.header__icon--account span.svg-wrapper, .header__icon.header__icon--cart span.svg-wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+.header-wrapper--cstm-style .header__icons.header__icons--localization.header-localization {
+    gap: 8px;
+}
+
+.header-wrapper--cstm-style .header__heading-logo-wrapper {
+    max-width: 75px;
+}
+
+.header-wrapper--cstm-style header-drawer {
+    width: 20px;
+}
+
+}
+

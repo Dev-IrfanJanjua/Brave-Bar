@@ -1,0 +1,407 @@
+{% liquid
+  assign section_bg = section.settings.section_bg
+  assign left_bg = section.settings.left_bg
+  assign right_bg = section.settings.right_bg
+%}
+
+<section
+  id="BraveComparison-{{ section.id }}"
+  class="brave-comparison section-{{ section.id }}"
+>
+    <div class="page-width">
+        <div class="brave-comparison__container">
+            {% if section.settings.heading != blank %}
+            <div class="brave-comparison__header">
+                <{{ section.settings.heading_tag }} class="brave-comparison__heading rte inline-richtext">
+                {{ section.settings.heading }}
+                </{{ section.settings.heading_tag }}>
+            </div>
+            {% endif %}
+    
+            <div class="brave-comparison__table-wrapper">
+            <div class="brave-comparison__table">
+                <div class="brave-comparison__headings">
+                <div class="brave-comparison__heading-col brave-comparison__heading-col--left">
+                    {% if section.settings.heading_left != blank %}
+                    <div class="brave-comparison__column-title inline-richtext rte">
+                        {{ section.settings.heading_left }}
+                    </div>
+                    {% endif %}
+                </div>
+    
+                <div class="brave-comparison__heading-col brave-comparison__heading-col--right">
+                    {% if section.settings.heading_right_image != blank %}
+                    <div class="brave-comparison__heading-image">
+                        {{
+                        section.settings.heading_right_image
+                        | image_url: width: 500
+                        | image_tag:
+                            loading: 'lazy',
+                            widths: '150, 250, 350, 500',
+                            class: 'brave-comparison__heading-image-img'
+                        }}
+                    </div>
+                    {% endif %}
+    
+                    {% if section.settings.heading_right != blank %}
+                    <div class="brave-comparison__column-title inline-richtext rte">
+                        {{ section.settings.heading_right }}
+                    </div>
+                    {% endif %}
+                </div>
+                </div>
+    
+                <div class="brave-comparison__rows">
+                {% for block in section.blocks %}
+                    <div
+                    class="brave-comparison__row"
+                    {{ block.shopify_attributes }}
+                    >
+                    <div class="brave-comparison__cell brave-comparison__cell--left">
+                        {% if block.settings.left_content != blank %}
+                        <div class="brave-comparison__cell-content rte inline-richtext">
+                            {{ block.settings.left_content }}
+                        </div>
+                        {% endif %}
+                    </div>
+    
+                    <div class="brave-comparison__cell brave-comparison__cell--right">
+                        {% if block.settings.right_content != blank %}
+                        <div class="brave-comparison__cell-content rte inline-richtext">
+                            {{ block.settings.right_content }}
+                        </div>
+                        {% endif %}
+                    </div>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+  .section-{{ section.id }} {
+    background: {{ section_bg }};
+    padding-top: {{ section.settings.padding_top_mobile }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+  }
+
+
+  .section-{{ section.id }} .brave-comparison__header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  .section-{{ section.id }} .brave-comparison__heading {
+    margin: 0;
+    font-size: {{ section.settings.heading_size_mobile }}px;
+    line-height: 1.1;
+    font-weight: 700;
+  }
+
+  .section-{{ section.id }} .brave-comparison__table {
+    border-radius: 24px;
+    overflow: hidden;
+  }
+
+  .section-{{ section.id }} .brave-comparison__headings,
+  .section-{{ section.id }} .brave-comparison__row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 0;
+  }
+
+  .section-{{ section.id }} .brave-comparison__headings {
+    align-items: end;
+  }
+
+  .section-{{ section.id }} .brave-comparison__heading-col,
+  .section-{{ section.id }} .brave-comparison__cell {
+    padding: 18px 16px;
+    position: relative;
+  }
+
+  .section-{{ section.id }} .brave-comparison__heading-col--left,
+  .section-{{ section.id }} .brave-comparison__cell--left {
+    background: {{ left_bg }};
+  }
+
+  .section-{{ section.id }} .brave-comparison__heading-col--right,
+  .section-{{ section.id }} .brave-comparison__cell--right {
+    background: {{ right_bg }};
+  }
+
+  .section-{{ section.id }} .brave-comparison__heading-col--right {
+    padding-top: 26px;
+    padding-bottom: 26px;
+    min-height: 108px;
+  }
+
+  .section-{{ section.id }} .brave-comparison__heading-col--left {
+    min-height: 88px;
+    display: flex;
+    align-items: center;
+  }
+
+  .section-{{ section.id }} .brave-comparison__column-title {
+    font-size: 18px;
+    line-height: 1.2;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .section-{{ section.id }} .brave-comparison__heading-image {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 12px;
+  }
+
+  .section-{{ section.id }} .brave-comparison__heading-image-img {
+    display: block;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    max-height: 46px;
+    object-fit: contain;
+  }
+
+  .section-{{ section.id }} .brave-comparison__rows {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .section-{{ section.id }} .brave-comparison__cell {
+    min-height: 74px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .section-{{ section.id }} .brave-comparison__cell-content {
+    width: 100%;
+    font-size: 16px;
+    line-height: 1.4;
+  }
+
+  .section-{{ section.id }} .brave-comparison__cell-content p:last-child,
+  .section-{{ section.id }} .brave-comparison__column-title p:last-child {
+    margin-bottom: 0;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top_desktop }}px;
+      padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    }
+
+    .section-{{ section.id }} .brave-comparison__header {
+      margin-bottom: 48px;
+    }
+
+    .section-{{ section.id }} .brave-comparison__heading {
+      font-size: {{ section.settings.heading_size_desktop }}px;
+    }
+
+    .section-{{ section.id }} .brave-comparison__headings,
+    .section-{{ section.id }} .brave-comparison__row {
+      gap: 0px;
+    }
+
+    .section-{{ section.id }} .brave-comparison__heading-col,
+    .section-{{ section.id }} .brave-comparison__cell {
+      padding: 24px 28px;
+    }
+
+    .section-{{ section.id }} .brave-comparison__heading-col--left {
+      min-height: 110px;
+    }
+
+    .section-{{ section.id }} .brave-comparison__heading-col--right {
+      min-height: 140px;
+      padding-top: 30px;
+      padding-bottom: 30px;
+    }
+
+    .section-{{ section.id }} .brave-comparison__column-title {
+      font-size: 24px;
+    }
+
+    .section-{{ section.id }} .brave-comparison__heading-image {
+      margin-bottom: 16px;
+    }
+
+    .section-{{ section.id }} .brave-comparison__heading-image-img {
+      max-height: 62px;
+    }
+
+    .section-{{ section.id }} .brave-comparison__cell {
+      min-height: 92px;
+    }
+
+    .section-{{ section.id }} .brave-comparison__cell-content {
+      font-size: 18px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Brave Comparison",
+  "class": "section brave-comparison-section",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Section heading"
+    },
+    {
+      "type": "select",
+      "id": "heading_tag",
+      "label": "Heading tag",
+      "default": "h2",
+      "options": [
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" },
+        { "value": "h3", "label": "H3" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "heading_size_desktop",
+      "label": "Heading size desktop",
+      "min": 20,
+      "max": 80,
+      "step": 2,
+      "default": 42
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "label": "Heading size mobile",
+      "min": 18,
+      "max": 48,
+      "step": 1,
+      "default": 30
+    },
+    {
+      "type": "header",
+      "content": "Table headings"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading_left",
+      "label": "Left heading"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading_right",
+      "label": "Right heading"
+    },
+    {
+      "type": "image_picker",
+      "id": "heading_right_image",
+      "label": "Right heading image"
+    },
+    {
+      "type": "header",
+      "content": "Background colors"
+    },
+    {
+      "type": "color",
+      "id": "section_bg",
+      "label": "Section background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "left_bg",
+      "label": "Left column background",
+      "default": "#f4f4f4"
+    },
+    {
+      "type": "color",
+      "id": "right_bg",
+      "label": "Right column background",
+      "default": "#2ea3db"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Padding top desktop",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Padding bottom desktop",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding top mobile",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding bottom mobile",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 48
+    }
+  ],
+  "blocks": [
+    {
+      "type": "row",
+      "name": "Row",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "left_content",
+          "label": "Left content"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "right_content",
+          "label": "Right content"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Brave Comparison",
+      "blocks": [
+        {
+          "type": "row"
+        },
+        {
+          "type": "row"
+        },
+        {
+          "type": "row"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,343 @@
+{% liquid
+  assign section_id = section.id
+%}
+
+{% style %}
+  .section-{{ section_id }} {
+    padding-top: {{ section.settings.padding_top_desktop }}px;
+    padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    background-color: {{ section.settings.section_bg }};
+  }
+
+  .section-{{ section_id }} .ingrediant-wrapper {
+    display: flex;
+  }
+
+  .section-{{ section_id }} .ingrediant-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    flex-direction: column;
+    align-items: self-start;
+    max-width: 50%;
+    width: 100%;
+  }
+
+  .section-{{ section_id }} .ingrediant-title {
+    margin: 0;
+    font-family: Kefir Bold;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 100%;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: #152728;
+  }
+
+  .section-{{ section_id }} .ingrediant-title em {
+    color: #D5792B;
+    font-style: normal;
+  }
+
+  .section-{{ section_id }} .ingrediant-desc {
+    margin: 24px 0 0;
+    font-family: Outfit;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    color: #152728;
+    max-width: 445px;
+  }
+
+  a.ingrediant-btn {
+        max-width: 266px;
+        width: 100%;
+    }
+
+  .section-{{ section_id }} .ingrediant-blocks {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        gap: 12px;
+        flex-direction: column;
+        max-width: 50%;
+        width: 100%;
+  }
+
+  .section-{{ section_id }} .ingrediant-block {
+    background-color: {{ section.settings.block_bg }};
+    border-color: {{ section.settings.block_border }};
+    border-width: 1.5px 1.5px 4px 4px;
+    border-style: solid;
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .section-{{ section_id }} .ingrediant-block_image {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+  }
+
+  .section-{{ section_id }} .ingrediant-block_image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  .section-{{ section_id }} .ingrediant-block_title {
+    font-family: Kefir DemiBold;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 100%;
+    letter-spacing: 0;
+    color: #152728;
+  }
+
+  .section-{{ section_id }} .ingrediant-btn_mob {
+    display: none;
+  }
+
+  @media screen and (max-width: 768px) {
+    .section-{{ section_id }} {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+
+    .section-{{ section_id }} .ingrediant-wrapper {
+      gap: 32px;
+      flex-direction: column;
+    }
+
+    .section-{{ section_id }} .ingrediant-content {
+      max-width: 100%;
+    }
+
+    .section-{{ section_id }} .ingrediant-title {
+        font-size: 28px;
+        line-height: 32px;
+        text-align: center;
+    }
+
+    .section-{{ section_id }} .ingrediant-desc {
+        text-align: center;
+        margin-top: 16px;
+    }
+
+    .section-{{ section_id }} .ingrediant-blocks {
+      max-width: 100%;
+    }
+
+    .section-{{ section_id }} .ingrediant-block {
+      padding: 24px 20px;
+    }
+
+    .section-{{ section_id }} .ingrediant-block_title {
+        font-size: 20px;
+    }
+
+    .section-{{ section_id }} .ingrediant-btn_desk {
+      display: none;
+    }
+
+    .section-{{ section_id }} .ingrediant-btn_mob {
+      display: inline-flex;
+      width: fit-content;
+      padding-block: 16px;
+    }
+  }
+{% endstyle %}
+
+<section class="ingrediant-section section-{{ section_id }}">
+  <div class="page-width">
+    <div class="ingrediant-wrapper">
+      {% if section.settings.title != blank or section.settings.description != blank or section.settings.button_label != blank %}
+        <div class="ingrediant-content">
+          {% if section.settings.title != blank or section.settings.description != blank %}
+            <div class="ingrediant-head">
+              {% if section.settings.title != blank %}
+                <h2 class="ingrediant-title inline-richtext">
+                  {{ section.settings.title }}
+                </h2>
+              {% endif %}
+
+              {% if section.settings.description != blank %}
+                <p class="ingrediant-desc">
+                  {{ section.settings.description }}
+                </p>
+              {% endif %}
+            </div>
+          {% endif %}
+
+          {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+            <a href="{{ section.settings.button_link }}" class="ingrediant-btn ingrediant-btn_desk btn_btn">
+              {{ section.settings.button_label }}
+            </a>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      {% if section.blocks.size > 0 %}
+        <ul class="ingrediant-blocks">
+          {% for block in section.blocks %}
+            {% if block.settings.title != blank %}
+              <li class="ingrediant-block" {{ block.shopify_attributes }}>
+                {% if block.settings.icon != blank %}
+                  <div class="ingrediant-block_image">
+                    {{ block.settings.icon | image_url: width: 1000 | image_tag:
+                      widths: '72, 100, 150, 200, 300',
+                      loading: 'lazy',
+                      alt: block.settings.title
+                    }}
+                  </div>
+                {% endif %}
+
+                <span class="ingrediant-block_title">
+                  {{ block.settings.title }}
+                </span>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      {% endif %}
+
+      {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+        <a href="{{ section.settings.button_link }}" class="ingrediant-btn ingrediant-btn_mob btn_btn">
+          {{ section.settings.button_label }}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Ingrediant Section",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "label": "Title",
+      "default": "Made with <em>powerful ingredients</em>"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Add your description text here."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "color",
+      "id": "section_bg",
+      "label": "Section Background",
+      "default": "#FFF8F2"
+    },
+    {
+      "type": "color",
+      "id": "block_bg",
+      "label": "Block Background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "block_border",
+      "label": "Block Border Color",
+      "default": "#D5792B"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Desktop Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Desktop Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Mobile Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Mobile Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "ingrediant_block",
+      "name": "Ingrediant Block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ingrediant Section",
+      "category": "Brave",
+      "blocks": [
+        {
+          "type": "ingrediant_block"
+        },
+        {
+          "type": "ingrediant_block"
+        },
+        {
+          "type": "ingrediant_block"
+        },
+        {
+          "type": "ingrediant_block"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

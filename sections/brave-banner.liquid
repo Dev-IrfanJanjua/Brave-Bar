@@ -1,0 +1,296 @@
+{% liquid
+  assign section_id = section.id
+%}
+
+{% style %}
+
+  .section-{{ section_id }} {
+      padding-top: {{ section.settings.padding_top_desktop }}px ;
+      padding-bottom: {{ section.settings.padding_bottom_desktop }}px ;
+      background: {{ section.settings.section_bg }};
+      margin-top: {{ section.settings.margin_top_desktop }}px;
+    }
+
+  .section-{{ section_id }} .brave-banner-wrapper {
+    background: {{ section.settings.content_bg }};
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0;
+    overflow: hidden;
+  }
+
+  .section-{{ section_id }} .brave-banner-content {
+      max-width: 500%;
+      width: 100%;
+      padding: 40px 50px 40px 80px;
+  }
+
+  .section-{{ section_id }} .brave-banner-image {
+    max-width: 50%;
+    width: 100%;
+    height: auto;
+    background: {{ section.settings.image_wrapper_bg }};
+  }
+
+  .section-{{ section_id }} .brave-banner-image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  .section-{{ section_id }} .brave-banner-title {
+    margin: 0 0 16px;
+    font-family: Kefir Bold;
+    font-weight: 700;
+    font-size: clamp(28px, 4.03vw, 58px);
+    line-height: 100%;
+    letter-spacing: 2%;
+    text-transform: uppercase;
+    color: #152728;
+    text-align: left;
+    max-width: 615px;
+  }
+
+  h1.brave-banner-title.inline-richtext em {
+    color: #D5792B;
+    font-style: normal;
+  }
+
+  .section-{{ section_id }} .brave-banner-desc {
+    margin: 0;
+  }
+
+  .brave-banner-desc.rte:after {
+      display: none;
+  }
+
+  .brave-banner-desc.rte ul {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 0;
+      margin: 0;
+  }
+
+  .brave-banner-desc.rte ul li {
+      font-family: Outfit;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 22px;
+      letter-spacing: 0%;
+      vertical-align: middle;
+      color: #1D211E;
+  }
+
+  .section-{{ section_id }} .brave-banner-btn {
+    display: inline-flex;
+    margin-top: 24px;
+  }
+
+  @media screen and (max-width: 991px){
+    .section-{{ section_id }} {
+      margin-top: {{ section.settings.margin_top_mobile }}px;
+    }
+  }
+
+
+  @media screen and (max-width: 768px) {
+
+    .section-{{ section_id }} {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      margin-top: {{ section.settings.margin_top_mobile }}px;
+    }
+
+    .section-{{ section_id }} .brave-banner-wrapper {
+      flex-direction: column-reverse;
+    }
+
+    .section-{{ section_id }} .brave-banner-content,
+    .section-{{ section_id }} .brave-banner-image {
+      max-width: 100%;
+    }
+
+    .section-{{ section_id }} .brave-banner-content {
+      padding: 4px 20px 24px;
+    }
+
+    .section-{{ section_id }} .brave-banner-title {
+      font-size: 28px;
+  }
+
+  .brave-banner-desc.rte ul {
+      gap: 8px;
+      flex-direction: column;
+      align-items: self-start;
+  }
+
+  .section-{{ section_id }} .brave-banner-btn {
+      margin-top: 20px;
+      max-width: 100%;
+      width: 100%;
+  }
+
+  }
+{% endstyle %}
+
+<section class="brave-banner-section section-{{ section_id }}">
+
+  {% comment %} <div class="page-width"> {% endcomment %}
+    <div class="brave-banner-wrapper">
+      {% if section.settings.title != blank or section.settings.description != blank or section.settings.button_label != blank %}
+        <div class="brave-banner-content">
+          {% if section.settings.title != blank or section.settings.description != blank %}
+            <div class="brave-banner-head">
+              {% if section.settings.title != blank %}
+                <h1 class="brave-banner-title inline-richtext">
+                  {{ section.settings.title }}
+                </h1>
+              {% endif %}
+
+              {% if section.settings.description != blank %}
+                <div class="brave-banner-desc rte">
+                  {{ section.settings.description | replace: '<p>', '' | replace: '</p>', '' }}
+                </div>
+              {% endif %}
+            </div>
+          {% endif %}
+
+          {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+            <a href="{{ section.settings.button_link }}" class="brave-banner-btn btn_btn">
+              {{ section.settings.button_label }}
+            </a>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      {% if section.settings.image != blank %}
+        <div class="brave-banner-image">
+          {{ section.settings.image | image_url: width: 2000 | image_tag: loading: 'eager', alt: section.settings.image.alt }}
+        </div>
+      {% endif %}
+    </div>
+  {% comment %} </div> {% endcomment %}
+</section>
+
+{% schema %}
+{
+  "name": "Brave Banner",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "label": "Title",
+      "default": "Your <em>banner</em> title"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Add your banner description here.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "color",
+      "id": "section_bg",
+      "label": "Section background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "content_bg",
+      "label": "Content wrapper background",
+      "default": "#f5f5f5"
+    },
+    {
+      "type": "color",
+      "id": "image_wrapper_bg",
+      "label": "Image wrapper background",
+      "default": "#eeeeee"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Desktop padding top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Desktop padding bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Mobile padding top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Mobile padding bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "margin_top_desktop",
+      "label": "Desktop margin top",
+      "min": -200,
+      "max": 0,
+      "step": 2,
+      "unit": "px",
+      "default": -30
+    },
+    {
+      "type": "range",
+      "id": "margin_top_mobile",
+      "label": "Mobile margin top",
+      "min": -100,
+      "max": 0,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Brave Banner",
+      "category": "Brave"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,536 @@
+{% liquid
+  assign section_id = section.id
+%}
+
+{% style %}
+.section-{{ section_id }} {
+  padding-top: {{ section.settings.padding_top_desktop }}px;
+  padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+  background-color: {{ section.settings.section_bg }};
+}
+
+.section-{{ section_id }} .insta-video-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.section-{{ section_id }} .insta-video-head {
+    padding: 0 80px;
+}
+
+.section-{{ section_id }} .insta-video-title {
+    margin: 0;
+    font-family: Kefir Bold;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 100%;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: #152728;
+    text-align: center;
+}
+
+.section-{{ section_id }} .insta-video-title.inline-richtext em {
+  color: #D5792B;
+  font-style: normal;
+}
+
+.section-{{ section_id }} .insta-video-desc {
+  margin: 16px 0 0;
+}
+
+.section-{{ section_id }} .insta-video-slider.swiper {
+  overflow: hidden;
+}
+
+.section-{{ section_id }} .insta-video-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.section-{{ section_id }} .insta-video-block {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  aspect-ratio: 1;
+}
+
+.section-{{ section_id }} .insta-video-block video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.section-{{ section_id }} .insta-video-block_overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, {{ section.settings.overlay_opacity }});
+  transition: opacity .3s ease;
+  z-index: 1;
+  display: block;
+}
+
+.section-{{ section_id }} .insta-video-block_icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    transition: opacity .3s ease;
+    width: 60px;
+    height: 60px;
+}
+
+.section-{{ section_id }} .insta-video-block_icon img{
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.section-{{ section_id }} .insta-video-block.is-playing .insta-video-block_overlay,
+.section-{{ section_id }} .insta-video-block.is-playing .insta-video-block_icon {
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+.section-{{ section_id }} .insta-video_social-icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    display: block;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.section-{{ section_id }} .insta-video_social-icon:hover,
+.section-{{ section_id }} a.insta-video_email:hover {
+    opacity: 0.8;
+}
+
+.section-{{ section_id }} .insta-video_social-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.section-{{ section_id }} .insta-video_social-icons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.section-{{ section_id }} a.insta-video_email {
+    font-family: Outfit;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0px;
+    text-decoration: none;
+    color: #152728;
+    transition: all 0.3s ease;
+}
+
+.section-{{ section_id }} .insta-video_social-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 12px;
+}
+
+@media screen and (max-width: 768px) {
+  .section-{{ section_id }} {
+    padding-top: {{ section.settings.padding_top_mobile }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+  }
+
+  .section-{{ section_id }} .insta-video-wrapper {
+        gap: 40px;
+    }
+
+    .section-{{ section_id }} .insta-video-title {
+        font-size: 28px;
+    }
+
+    .section-{{ section_id }} .insta-video-head {
+        padding: 0 20px;
+    }
+
+    {% if section.settings.mobile_layout == 'swiper' %}
+        .section-{{ section_id }} .insta-video-blocks {
+            padding-left: 20px;
+        }
+
+        .section-{{ section_id }} .insta-video-block_icon {
+            width: 50px;
+            height: 50px;
+        }
+
+    {% endif %}
+
+  {% if section.settings.mobile_layout == 'grid' %}
+    .section-{{ section_id }} .insta-video-slider.swiper {
+      overflow: visible;
+    }
+
+    .section-{{ section_id }} .insta-video-slider .swiper-wrapper {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px 12px;
+        transform: none !important;
+    }
+
+    .section-{{ section_id }} .insta-video-slider .swiper-slide {
+      width: 100% !important;
+      margin-right: 0 !important;
+    }
+
+    .section-{{ section_id }} .insta-video-block_icon {
+        width: 32px;
+        height: 32px;
+    }
+
+  {% endif %}
+}
+{% endstyle %}
+
+<section class="insta-video-section section-{{ section_id }}" data-mobile-layout="{{ section.settings.mobile_layout }}">
+  {% comment %} <div class="page-width"> {% endcomment %}
+    <div class="insta-video-wrapper">
+      {% if section.settings.title != blank or section.settings.subtitle != blank %}
+        <div class="insta-video-head">
+          {% if section.settings.title != blank %}
+            <h2 class="insta-video-title inline-richtext">{{ section.settings.title }}</h2>
+          {% endif %}
+
+          {% if section.settings.subtitle != blank %}
+            <p class="insta-video-desc">{{ section.settings.subtitle }}</p>
+          {% endif %}
+
+            {% if section.settings.social_heading != blank
+                or section.settings.email_text != blank
+                or section.settings.instagram_icon != blank
+                or section.settings.instagram_link != blank
+                or section.settings.tiktok_icon != blank
+                or section.settings.tiktok_link != blank
+            %}
+                <div class="insta-video_social-wrapper">
+                    
+                    {% if section.settings.social_heading != blank %}
+                    <h3 class="insta-video_social-heading">
+                        {{ section.settings.social_heading }}
+                    </h3>
+                    {% endif %}
+
+                    {% if section.settings.email_text != blank and section.settings.email_link != blank %}
+                    <a href="{{ section.settings.email_link }}" class="insta-video_email">
+                        {{ section.settings.email_text }}
+                    </a>
+                    {% endif %}
+
+                    {% if section.settings.instagram_icon != blank or section.settings.tiktok_icon != blank %}
+                    <div class="insta-video_social-icons">
+
+                        {% if section.settings.instagram_icon != blank and section.settings.instagram_link != blank %}
+                        <a href="{{ section.settings.instagram_link }}" class="insta-video_insta insta-video_social-icon">
+                            {{
+                            section.settings.instagram_icon
+                            | image_url: width: 500
+                            | image_tag:
+                                widths: '50,100,150,200',
+                                loading: 'lazy',
+                                alt: 'Instagram'
+                            }}
+                        </a>
+                        {% endif %}
+
+                        {% if section.settings.tiktok_icon != blank and section.settings.tiktok_link != blank %}
+                        <a href="{{ section.settings.tiktok_link }}" class="insta-video_tiktok insta-video_social-icon">
+                            {{
+                            section.settings.tiktok_icon
+                            | image_url: width: 500
+                            | image_tag:
+                                widths: '50,100,150,200',
+                                loading: 'lazy',
+                                alt: 'TikTok'
+                            }}
+                        </a>
+                        {% endif %}
+
+                    </div>
+                    {% endif %}
+
+                </div>
+            {% endif %}
+
+
+        </div>
+      {% endif %}
+
+      {% if section.blocks.size > 0 %}
+        <div class="insta-video-blocks">
+            <div class="insta-video-slider swiper">
+              <div class="swiper-wrapper">
+                {% for block in section.blocks %}
+                  <div class="swiper-slide" {{ block.shopify_attributes }}>
+                    <div class="insta-video-block">
+                      {% assign video_poster = block.settings.poster %}
+                      {{ block.settings.video | video_tag: class: 'custom-video-slider', controls: false, muted: false, loop: false, autoplay: false, poster: video_poster }}
+    
+                      <div class="insta-video-block_overlay"></div>
+    
+                      {% if section.settings.icon != blank %}
+                        <div class="insta-video-block_icon">
+                          {{ section.settings.icon | image_url: width: 120 | image_tag: loading: 'lazy', alt: 'Play icon' }}
+                        </div>
+                      {% endif %}
+                    </div>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+        </div>
+      {% endif %}
+    </div>
+  {% comment %} </div> {% endcomment %}
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const section = document.querySelector('.section-{{ section_id }}');
+
+    if (!section) return;
+
+    const enableMobileSwiper = section.dataset.mobileLayout === 'swiper';
+
+    if (typeof Swiper !== 'undefined') {
+      new Swiper(section.querySelector('.insta-video-slider'), {
+        slidesPerView: 4,
+        spaceBetween: 20,
+        speed: 1500,
+        loop: false,
+        breakpoints: {
+          0: {
+            enabled: enableMobileSwiper,
+            slidesPerView: 1.2,
+            spaceBetween: 20
+          },
+          769: {
+            enabled: true,
+            slidesPerView: 4,
+            spaceBetween: 20
+          }
+        }
+      });
+    }
+
+    const videoBlocks = section.querySelectorAll('.insta-video-block');
+
+    videoBlocks.forEach((block) => {
+      const video = block.querySelector('video');
+
+      if (!video) return;
+
+      block.addEventListener('click', function () {
+        videoBlocks.forEach((otherBlock) => {
+          const otherVideo = otherBlock.querySelector('video');
+
+          if (otherVideo && otherVideo !== video) {
+            otherVideo.pause();
+            otherBlock.classList.remove('is-playing');
+          }
+        });
+
+        if (video.paused) {
+          const playPromise = video.play();
+
+          if (playPromise !== undefined) {
+            playPromise.then(() => {
+              block.classList.add('is-playing');
+            }).catch((error) => {
+              console.log('Video play failed:', error);
+            });
+          }
+        } else {
+          video.pause();
+          block.classList.remove('is-playing');
+        }
+      });
+
+      video.addEventListener('pause', function () {
+        block.classList.remove('is-playing');
+      });
+
+      video.addEventListener('ended', function () {
+        block.classList.remove('is-playing');
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Insta Video Section",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "label": "Title",
+      "default": "Watch our <em>videos</em>"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Description"
+    },
+    {
+        "type": "header",
+        "content": "Social"
+    },
+    {
+        "type": "text",
+        "id": "social_heading",
+        "label": "Social heading",
+        "default": "Follow us"
+    },
+    {
+        "type": "text",
+        "id": "email_text",
+        "label": "Email text",
+        "default": "hello@example.com"
+    },
+    {
+        "type": "url",
+        "id": "email_link",
+        "label": "Email link"
+    },
+    {
+        "type": "image_picker",
+        "id": "instagram_icon",
+        "label": "Instagram icon"
+    },
+    {
+        "type": "url",
+        "id": "instagram_link",
+        "label": "Instagram link"
+    },
+    {
+        "type": "image_picker",
+        "id": "tiktok_icon",
+        "label": "TikTok icon"
+    },
+    {
+        "type": "url",
+        "id": "tiktok_link",
+        "label": "TikTok link"
+    },
+    {
+      "type": "image_picker",
+      "id": "icon",
+      "label": "Play Icon"
+    },
+    {
+      "type": "select",
+      "id": "mobile_layout",
+      "label": "Mobile Layout",
+      "default": "swiper",
+      "options": [
+        {
+          "value": "swiper",
+          "label": "Swiper"
+        },
+        {
+          "value": "grid",
+          "label": "Grid"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Overlay Opacity",
+      "min": 0,
+      "max": 0.8,
+      "step": 0.1,
+      "default": 0.3
+    },
+    {
+      "type": "color",
+      "id": "section_bg",
+      "label": "Section Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Desktop Padding Top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Desktop Padding Bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Mobile Padding Top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Mobile Padding Bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "video_block",
+      "name": "Video Block",
+      "settings": [
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Video"
+        },
+        {
+          "type": "image_picker",
+          "id": "poster",
+          "label": "Poster Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Insta Video Section",
+      "category": "Brave"
+    }
+  ]
+}
+{% endschema %}

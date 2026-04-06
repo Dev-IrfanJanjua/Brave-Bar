@@ -1,0 +1,92 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "brave_footer_rawFWh": {
+      "type": "brave-footer",
+      "blocks": {
+        "menu_x8VHb6": {
+          "type": "menu",
+          "settings": {
+            "heading": "Discover More",
+            "menu": "discover-more",
+            "position": "left"
+          }
+        },
+        "menu_WMGRMt": {
+          "type": "menu",
+          "settings": {
+            "heading": "Customer Service",
+            "menu": "customer-service",
+            "position": "right"
+          }
+        },
+        "social_U7NQCy": {
+          "type": "social",
+          "settings": {
+            "icon": "shopify://shop_images/InstagramLogo_1.svg",
+            "link": "#"
+          }
+        },
+        "social_c9Q3qw": {
+          "type": "social",
+          "settings": {
+            "icon": "shopify://shop_images/TiktokLogo.svg",
+            "link": "#"
+          }
+        }
+      },
+      "block_order": [
+        "menu_x8VHb6",
+        "menu_WMGRMt",
+        "social_U7NQCy",
+        "social_c9Q3qw"
+      ],
+      "name": "Brave Footer",
+      "settings": {
+        "top_svg_desktop": "shopify://shop_images/Frame_2147242536_1.svg",
+        "top_svg_mobile": "shopify://shop_images/Frame_2147229675.svg",
+        "logo": "shopify://shop_images/Frame_2147229670_1.png",
+        "section_bg": "#f9e9d5",
+        "newsletter_heading": "Sign up for updates and exclusive offers!",
+        "newsletter_desc": "",
+        "copyright_text": "<p>, Brave Bar LLC <br/>Austin, Texas</p>",
+        "padding_top_desktop": 20,
+        "padding_bottom_desktop": 100,
+        "padding_top_mobile": 22,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "footer": {
+      "type": "footer",
+      "disabled": true,
+      "settings": {
+        "color_scheme": "scheme-1",
+        "newsletter_enable": true,
+        "newsletter_heading": "Subscribe to our emails",
+        "enable_follow_on_shop": true,
+        "show_social": true,
+        "enable_country_selector": true,
+        "enable_language_selector": true,
+        "payment_enable": true,
+        "show_policy": true,
+        "margin_top": 0,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "brave_footer_rawFWh",
+    "footer"
+  ]
+}

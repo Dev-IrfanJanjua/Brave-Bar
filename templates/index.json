@@ -1,0 +1,258 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "brave_banner_eVDYJW": {
+      "type": "brave-banner",
+      "name": "Brave Banner",
+      "settings": {
+        "title": "Real Ingredients <em>Nothing to Hide </em>",
+        "description": "<ul><li>Small-Batch Crafted</li><li>Made in Austin, Texas</li><li>Nothing Artificial</li></ul>",
+        "button_label": "Shop Now",
+        "button_link": "shopify://collections/all",
+        "image": "shopify://shop_images/Frame.png",
+        "section_bg": "rgba(0,0,0,0)",
+        "content_bg": "#f7e4d5",
+        "image_wrapper_bg": "#fcf7ec",
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "margin_top_desktop": -104,
+        "margin_top_mobile": 0
+      }
+    },
+    "brave_video_tPVfYC": {
+      "type": "brave-video",
+      "blocks": {
+        "video_block_paPiKU": {
+          "type": "video_block",
+          "settings": {
+            "video": "shopify://files/videos/New reel for Olmec Chocolates! Wanted to capture the richness of chocolate, combining it with sm.mp4"
+          }
+        },
+        "video_block_VHkt3w": {
+          "type": "video_block",
+          "settings": {
+            "video": "shopify://files/videos/Шоколадні батончики з горішками та ягодами. Набір 6 батончиків в подарунковому пакуванні. - моло.mp4"
+          }
+        },
+        "video_block_Niz8Ch": {
+          "type": "video_block",
+          "settings": {
+            "video": "shopify://files/videos/💎 This woman reimagined chocolate by turning it into something that looks like a rare gemstone,.mp4"
+          }
+        },
+        "video_block_j7JWfb": {
+          "type": "video_block",
+          "settings": {
+            "video": "shopify://files/videos/Шоколадні батончики з горішками та ягодами. Набір 6 батончиків в подарунковому пакуванні. - моло.mp4"
+          }
+        }
+      },
+      "block_order": [
+        "video_block_paPiKU",
+        "video_block_VHkt3w",
+        "video_block_Niz8Ch",
+        "video_block_j7JWfb"
+      ],
+      "name": "Brave Video Section",
+      "settings": {
+        "title": "Real People Love <em>Real Food</em>",
+        "subtitle": "",
+        "icon": "shopify://shop_images/Frame_1.svg",
+        "mobile_layout": "grid",
+        "overlay_opacity": 0.3,
+        "section_bg": "#ffffff",
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 0,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "title_list_R9gJKm": {
+      "type": "title-list",
+      "blocks": {
+        "list_item_8YL3cz": {
+          "type": "list_item",
+          "settings": {
+            "list_text": "Built as a snack"
+          }
+        },
+        "list_item_eDRkhL": {
+          "type": "list_item",
+          "settings": {
+            "list_text": "Chalky Texture"
+          }
+        },
+        "list_item_rzfWxG": {
+          "type": "list_item",
+          "settings": {
+            "list_text": "Not crave-able"
+          }
+        }
+      },
+      "block_order": [
+        "list_item_8YL3cz",
+        "list_item_eDRkhL",
+        "list_item_rzfWxG"
+      ],
+      "name": "Title List",
+      "settings": {
+        "title": "The Problem with <em>Protein Bars</em>",
+        "subtitle": "Most protein bars miss the basics of real substance, good texture, and great taste.",
+        "icon": "shopify://shop_images/Vector.svg_1.svg",
+        "section_bg": "#ffffff",
+        "wrapper_bg": "#fff0da",
+        "wrapper_border_width": 1,
+        "wrapper_border_color": "#d5792b",
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 80,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "ingrediant_RemEcL": {
+      "type": "ingrediant",
+      "blocks": {
+        "ingrediant_block_LiknFf": {
+          "type": "ingrediant_block",
+          "settings": {
+            "icon": "shopify://shop_images/Group_2.svg",
+            "title": "No fillers"
+          }
+        },
+        "ingrediant_block_FNyw3W": {
+          "type": "ingrediant_block",
+          "settings": {
+            "icon": "shopify://shop_images/Mask_group.png",
+            "title": "No seed oils"
+          }
+        },
+        "ingrediant_block_CEcaHf": {
+          "type": "ingrediant_block",
+          "settings": {
+            "icon": "shopify://shop_images/Group_1707479760_1.svg",
+            "title": "No preservatives"
+          }
+        },
+        "ingrediant_block_79HXhf": {
+          "type": "ingrediant_block",
+          "settings": {
+            "icon": "shopify://shop_images/Group_3.svg",
+            "title": "No artificial or \"natural\" flavors"
+          }
+        }
+      },
+      "block_order": [
+        "ingrediant_block_LiknFf",
+        "ingrediant_block_FNyw3W",
+        "ingrediant_block_CEcaHf",
+        "ingrediant_block_79HXhf"
+      ],
+      "name": "Ingrediant Section",
+      "settings": {
+        "title": "what we mean by <em>real ingredients</em>",
+        "description": "What we leave out matters just as much as what we put in.",
+        "button_label": "Shop Now",
+        "button_link": "shopify://collections/all",
+        "section_bg": "rgba(0,0,0,0)",
+        "block_bg": "#fff0da",
+        "block_border": "#d5792b",
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "brave_image_text_9D93th": {
+      "type": "brave-image-text",
+      "name": "Brave Image & Text",
+      "settings": {
+        "title": "Why <em>Brave Bar</em> Exists",
+        "desc": "Brave Bar was created to make real ingredients the standard in protein bars. What began as frustration with over‑processed options became a commitment to create something better, made with high‑quality ingredients, grass‑fed protein, and nothing artificial. Brave Bar is for people who read labels, care about what they eat, and believe food should be made the right way — with nothing to hide.",
+        "image": "shopify://shop_images/image.png",
+        "btn_text": "Our Story",
+        "btn_link": "#",
+        "section_bg": "#ffffff",
+        "wrapper_bg": "#ffffff",
+        "wrapper_border_color": "#d9d9d9",
+        "wrapper_border_width": 0,
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "insta_video_slider_XzGHT3": {
+      "type": "insta-video-slider",
+      "blocks": {
+        "video_block_JmFNLw": {
+          "type": "video_block",
+          "settings": {
+            "video": "shopify://files/videos/💎 This woman reimagined chocolate by turning it into something that looks like a rare gemstone,.mp4"
+          }
+        },
+        "video_block_gTdAdc": {
+          "type": "video_block",
+          "settings": {
+            "video": "shopify://files/videos/Шоколадні батончики з горішками та ягодами. Набір 6 батончиків в подарунковому пакуванні. - моло.mp4"
+          }
+        },
+        "video_block_4tCMjy": {
+          "type": "video_block",
+          "settings": {
+            "video": "shopify://files/videos/Красивые дизайнерские шоколады, созданные из настоящего бельгийского шоколада, — это идеальный п.mp4"
+          }
+        },
+        "video_block_ArzJm3": {
+          "type": "video_block",
+          "settings": {
+            "video": "shopify://files/videos/New reel for Olmec Chocolates! Wanted to capture the richness of chocolate, combining it with sm.mp4"
+          }
+        }
+      },
+      "block_order": [
+        "video_block_JmFNLw",
+        "video_block_gTdAdc",
+        "video_block_4tCMjy",
+        "video_block_ArzJm3"
+      ],
+      "name": "Insta Video Section",
+      "settings": {
+        "title": "FOLLOW OUR <em>jOURNEY</em>",
+        "subtitle": "",
+        "social_heading": "",
+        "email_text": "@bravebar.co",
+        "email_link": "mailto:@bravebar.co",
+        "instagram_icon": "shopify://shop_images/InstagramLogo_1.svg",
+        "instagram_link": "#",
+        "tiktok_icon": "shopify://shop_images/TiktokLogo.svg",
+        "tiktok_link": "#",
+        "icon": "shopify://shop_images/Frame_1.svg",
+        "mobile_layout": "swiper",
+        "overlay_opacity": 0.3,
+        "section_bg": "#ffffff",
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 80,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
+    }
+  },
+  "order": [
+    "brave_banner_eVDYJW",
+    "brave_video_tPVfYC",
+    "title_list_R9gJKm",
+    "ingrediant_RemEcL",
+    "brave_image_text_9D93th",
+    "insta_video_slider_XzGHT3"
+  ]
+}
