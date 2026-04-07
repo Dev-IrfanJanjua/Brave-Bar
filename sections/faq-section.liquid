@@ -1,6 +1,6 @@
 {% style %}
   .section-{{ section.id }}{
-      background-color: {{ section.settings.bg_color }};
+      background: {{ section.settings.bg_color }};
       padding-top: {{ section.settings.padding_top }}px;
       padding-bottom: {{ section.settings.padding_bottom }}px;
       position: relative;
@@ -543,7 +543,7 @@ span.img-faq-question-text {
       "label": "Background Image Bottom"
     },
     {
-      "type": "color",
+      "type": "color_background",
       "id": "bg_color",
       "label": "Section Background Color",
       "default": "#fff"

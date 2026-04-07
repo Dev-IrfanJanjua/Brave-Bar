@@ -1,0 +1,694 @@
+{% liquid
+  assign section_heading = section.settings.heading
+  assign center_image = section.settings.center_image
+  assign top_mobile_image = section.settings.mobile_top_arrow
+  assign bottom_mobile_image = section.settings.mobile_bottom_arrow
+%}
+
+{% style %}
+  .nutrition-section {
+    background: {{ section.settings.background_color }};
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    position: relative;
+  }
+
+  .nutrition-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .nutrition-content {
+    width: 100%;
+  }
+
+  .nutrition-heading-wrapper {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .nutrition-heading {
+    color: {{ section.settings.heading_color }};
+    margin: 0;
+    font-family: Kefir Bold;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 100%;
+    letter-spacing: 0;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .nutrition-heading em,
+  .nutrition-heading i {
+    color: {{ section.settings.heading_highlight_color }};
+    font-style: normal;
+  }
+
+  .nutrition-blocks-wrapper {
+    display: grid;
+    grid-template-columns: minmax(250px, 1fr) auto minmax(250px, 1fr);
+    align-items: center;
+    width: 100%;
+  }
+
+  .nutrition-side {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .nutrition-side--left {
+    align-items: flex-end;
+  }
+
+  .nutrition-side--right {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .nutrition-block {
+    display: flex;
+    max-width: 100%;
+    width: 100%;
+    position: relative;
+    gap: 10px;
+  }
+
+  .nutrition-side--left .nutrition-block {
+    justify-content: flex-end;
+  }
+
+  .nutrition-side--right .nutrition-block {
+    justify-content: flex-start;
+  }
+
+  .nutrition-block--top {
+    flex-direction: column-reverse;
+  }
+
+  .nutrition-block--bottom {
+    flex-direction: column;
+  }
+
+  .nutrition-block-arrow {
+        max-width: 40px;
+        height: auto;
+    }
+
+  .nutrition-side--left .nutrition-block-arrow {
+    display: flex;
+    justify-content: flex-end;
+    margin-left: auto;
+  }
+
+  .nutrition-side--right .nutrition-block-arrow {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .nutrition-block-arrow-image {
+    display: block;
+    max-width: 70px;
+    width: 100%;
+    height: auto;
+  }
+
+  .nutrition-block-heading-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+
+  .nutrition-side--right .nutrition-block-heading-wrap {
+    justify-content: flex-start;
+  }
+
+  .nutrition-block-common-icon {
+    display: flex;
+    flex-shrink: 0;
+    max-width: 50px;
+    width: 100%;
+    height: auto;
+  }
+
+  .nutrition-block-common-icon-image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  .nutrition-block-heading {
+    color: {{ section.settings.block_heading_color }};
+    margin: 0;
+    font-family: Kefir DemiBold;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 100%;
+    letter-spacing: 0;
+    text-align: right;
+  }
+
+  .nutrition-block-subheading {
+    color: {{ section.settings.block_text_color }};
+    font-family: Outfit;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22.4px;
+    letter-spacing: 0;
+  }
+
+  .nutrition-center-image-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 380px;
+    width: 100%;
+  }
+
+  .nutrition-center-image-tag {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .nutrition-mobile-arrow {
+    display: none;
+  }
+
+  .nutrition-button-wrapper {
+    margin-top: 60px;
+    text-align: center;
+  }
+
+  .nutrition-button {
+    background: {{ section.settings.button_background_color }};
+    color: {{ section.settings.button_text_color }};
+    font-size: 18px;
+    line-height: 22.4px;
+  }
+
+  .nutrition-button:hover {
+    background: {{ section.settings.button_text_color }};
+    color: {{ section.settings.button_background_color }};
+  }
+
+  .nutrition-center-image {
+        max-width: 90%;
+        width: 100%;
+        height: 100%;
+    }
+
+  .section-{{ section.id }} .section_bg-image_top,
+  .section-{{ section.id }} .section_bg-image_bottom {
+      position: absolute;
+      width: 100%;
+      left: 0;
+      right: 0;
+      height: 80px;
+  }
+
+  .section-{{ section.id }} .section_bg-image_top{
+    top: -4px; 
+  }
+
+  .section-{{ section.id }} .section_bg-image_bottom{
+    bottom: -3px; 
+  }
+
+  .section-{{ section.id }} .section_bg-image_top img,
+  .section-{{ section.id }} .section_bg-image_bottom img {
+      width: 100%;
+      height: 100% !important;
+      object-fit: cover;
+      display: block;
+  }
+
+  @media screen and (max-width: 768px) {
+    .nutrition-section {
+        padding-top: {{ section.settings.padding_top_mob }}px;
+        padding-bottom: {{ section.settings.padding_bottom_mob }}px;
+    }
+
+    .nutrition-heading-wrapper {
+      margin-bottom: 24px;
+    }
+
+    .nutrition-heading {
+      font-size: 28px;
+      line-height: 32px;
+    }
+
+    .nutrition-blocks-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      padding: 0 8.5px;
+    }
+
+    .nutrition-side {
+      width: 100%;
+      gap: 20px;
+    }
+
+    .nutrition-block-common-icon {
+        max-width: 38px;
+    }
+
+    .nutrition-side--left {
+      order: 1;
+      align-items: center;
+      text-align: center;
+    }
+
+    .nutrition-center-image-wrap {
+      order: 2;
+      position: relative;
+      max-width: 100%;
+    }
+
+    .nutrition-side--right {
+      order: 3;
+      align-items: center;
+      text-align: center;
+    }
+
+    .nutrition-block {
+      max-width: 100%;
+      width: 100%;
+      align-items: center;
+    }
+
+    .nutrition-block--top,
+    .nutrition-block--bottom {
+      flex-direction: column;
+    }
+
+    .nutrition-block-arrow {
+      display: none !important;
+    }
+
+    .nutrition-mobile-arrow {
+      display: block;
+    }
+
+    .nutrition-mobile-arrow--top {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        max-width: 40px;
+        width: 100%;
+        height: auto;
+        flex-shrink: 0;
+    }
+
+    .nutrition-mobile-arrow--bottom {
+        position: absolute;
+        bottom: 0px;
+        right: 0px;
+        max-width: 30px;
+        width: 100%;
+        height: auto;
+        flex-shrink: 0;
+    }
+
+    .nutrition-mobile-arrow-image {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .nutrition-block-heading {
+      font-size: 20px;
+    }
+
+    .nutrition-block-subheading {
+      text-align: start;
+    }
+
+    .nutrition-button-wrapper {
+      margin-top: 24px;
+    }
+
+    .nutrition-button {
+      font-size: 16px;
+    }
+
+    .nutrition-center-image {
+        max-width: 70%;
+    }
+
+    .section-{{ section.id }} .section_bg-image_bottom {
+        bottom: -3px;
+        height: 30px;
+    }
+
+    .section-{{ section.id }} .section_bg-image_top {
+        top: -4px;
+        height: 30px;
+    }
+  }
+{% endstyle %}
+
+<section class="nutrition-section section-{{ section.id }}">
+
+    {% if section.settings.bg_image_top != blank %}
+      <div class="section_bg-image_top">
+        {{ section.settings.bg_image_top | image_url: width: 1600 | image_tag:
+            widths: '50, 100, 150, 200, 250, 300, 400, 500, 600, 1440',
+            alt: 'image',
+            loading: 'lazy'
+        }}
+      </div>
+    {% endif %}
+
+    {% if section.settings.bg_image_bottom != blank %}
+      <div class="section_bg-image_bottom">
+        {{ section.settings.bg_image_bottom | image_url: width: 1600 | image_tag:
+            widths: '50, 100, 150, 200, 250, 300, 400, 500, 600, 1440',
+            alt: 'image',
+            loading: 'lazy'
+        }}
+      </div>
+    {% endif %}
+
+  <div class="page-width">
+    <div class="nutrition-wrapper">
+
+      <div class="nutrition-content">
+        <div class="nutrition-heading-wrapper">
+          {% if section_heading != blank %}
+            <h2 class="nutrition-heading inline-richtext">{{ section_heading }}</h2>
+          {% endif %}
+        </div>
+
+        <div class="nutrition-blocks-wrapper">
+          <div class="nutrition-side nutrition-side--left">
+            {% for block in section.blocks %}
+              {% if block.settings.position == 'left' %}
+                <div class="nutrition-block nutrition-block--{{ block.settings.image_position }}" {{ block.shopify_attributes }}>
+
+                  {% if block.settings.arrow_image != blank %}
+                    <div class="nutrition-block-arrow nutrition-block-arrow--{{ block.settings.image_position }}">
+                      {{ block.settings.arrow_image | image_url: width: 120 | image_tag: class: 'nutrition-block-arrow-image', loading: 'lazy' }}
+                    </div>
+                  {% endif %}
+
+                  <div class="nutrition-block-content">
+                    <div class="nutrition-block-heading-wrap">
+                      {% if section.settings.common_icon != blank %}
+                        <span class="nutrition-block-common-icon">
+                          {{ section.settings.common_icon | image_url: width: 200 | image_tag: class: 'nutrition-block-common-icon-image', loading: 'lazy' }}
+                        </span>
+                      {% endif %}
+
+                      {% if block.settings.heading != blank %}
+                        <h3 class="nutrition-block-heading">{{ block.settings.heading }}</h3>
+                      {% endif %}
+                    </div>
+
+                    {% if block.settings.subheading != blank %}
+                      <div class="nutrition-block-subheading">{{ block.settings.subheading }}</div>
+                    {% endif %}
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+
+          <div class="nutrition-center-image-wrap">
+            <div class="nutrition-mobile-arrow nutrition-mobile-arrow--top">
+              {% if top_mobile_image != blank %}
+                {{ top_mobile_image | image_url: width: 120 | image_tag: class: 'nutrition-mobile-arrow-image', loading: 'lazy' }}
+              {% endif %}
+            </div>
+
+            {% if center_image != blank %}
+              <div class="nutrition-center-image">
+                {{ center_image | image_url: width: 900 | image_tag: class: 'nutrition-center-image-tag', loading: 'lazy' }}
+              </div>
+            {% endif %}
+
+            <div class="nutrition-mobile-arrow nutrition-mobile-arrow--bottom">
+              {% if bottom_mobile_image != blank %}
+                {{ bottom_mobile_image | image_url: width: 120 | image_tag: class: 'nutrition-mobile-arrow-image', loading: 'lazy' }}
+              {% endif %}
+            </div>
+          </div>
+
+          <div class="nutrition-side nutrition-side--right">
+            {% for block in section.blocks %}
+              {% if block.settings.position == 'right' %}
+                <div class="nutrition-block nutrition-block--{{ block.settings.image_position }}" {{ block.shopify_attributes }}>
+
+                  {% if block.settings.arrow_image != blank %}
+                    <div class="nutrition-block-arrow nutrition-block-arrow--{{ block.settings.image_position }}">
+                      {{ block.settings.arrow_image | image_url: width: 120 | image_tag: class: 'nutrition-block-arrow-image', loading: 'lazy' }}
+                    </div>
+                  {% endif %}
+
+                  <div class="nutrition-block-content">
+                    <div class="nutrition-block-heading-wrap">
+                      {% if section.settings.common_icon != blank %}
+                        <span class="nutrition-block-common-icon">
+                          {{ section.settings.common_icon | image_url: width: 200 | image_tag: class: 'nutrition-block-common-icon-image', loading: 'lazy' }}
+                        </span>
+                      {% endif %}
+
+                      {% if block.settings.heading != blank %}
+                        <h3 class="nutrition-block-heading">{{ block.settings.heading }}</h3>
+                      {% endif %}
+                    </div>
+
+                    {% if block.settings.subheading != blank %}
+                      <div class="nutrition-block-subheading">{{ block.settings.subheading }}</div>
+                    {% endif %}
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      {% if section.settings.button_label != blank %}
+        <div class="nutrition-button-wrapper">
+          <a
+            href="{{ section.settings.button_link }}"
+            class="nutrition-button btn_btn"
+          >
+            {{ section.settings.button_label }}
+          </a>
+        </div>
+      {% endif %}
+
+    </div>
+  </div>
+</section>
+
+
+{% schema %}
+{
+  "name": "Nutrition Section",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "REAL INGREDIENTS <em>REAL NUTRITION.</em>"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image_top",
+      "label": "Background Image Top"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image_bottom",
+      "label": "Background Image Bottom"
+    },
+    {
+      "type": "color_background",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#d98a43"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#0d2a32"
+    },
+    {
+      "type": "color",
+      "id": "heading_highlight_color",
+      "label": "Heading Highlight Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "block_heading_color",
+      "label": "Block Heading Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "block_text_color",
+      "label": "Block Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "image_picker",
+      "id": "center_image",
+      "label": "Center Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "common_icon",
+      "label": "Common Block Heading Icon"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_top_arrow",
+      "label": "Mobile Top Arrow Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_bottom_arrow",
+      "label": "Mobile Bottom Arrow Image"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "View All Ingredients"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "color",
+      "id": "button_background_color",
+      "label": "Button Background",
+      "default": "#f3f0ea"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#1d1d1d"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mob",
+      "label": "Padding Top Mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mob",
+      "label": "Padding Bottom Mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "nutrition_item",
+      "name": "Nutrition Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "textarea",
+          "id": "subheading",
+          "label": "Subheading"
+        },
+        {
+          "type": "image_picker",
+          "id": "arrow_image",
+          "label": "Arrow Image"
+        },
+        {
+          "type": "select",
+          "id": "position",
+          "label": "Block Side",
+          "default": "left",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "image_position",
+          "label": "Arrow Position",
+          "default": "bottom",
+          "options": [
+            {
+              "value": "top",
+              "label": "Arrow On Top"
+            },
+            {
+              "value": "bottom",
+              "label": "Arrow On Bottom"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [
+    {
+      "name": "Nutrition Section",
+      "category": "Brave"
+    }
+  ]
+}
+{% endschema %}

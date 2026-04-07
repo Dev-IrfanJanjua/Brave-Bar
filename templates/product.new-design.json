@@ -182,6 +182,102 @@
         "padding_bottom_mobile": 48
       }
     },
+    "nutrition_section_cmGGYj": {
+      "type": "nutrition-section",
+      "blocks": {
+        "nutrition_item_6FgHgg": {
+          "type": "nutrition_item",
+          "settings": {
+            "heading": "Grass-Fed Collagen",
+            "subheading": "High quality, bioavailable protein to support joints, connective tissue, and healthy skin.",
+            "arrow_image": "shopify://shop_images/Vector_2.svg",
+            "position": "left",
+            "image_position": "top"
+          }
+        },
+        "nutrition_item_r6B4nM": {
+          "type": "nutrition_item",
+          "settings": {
+            "heading": "Grass Fed Whey Protein",
+            "subheading": "A complete protein with all essential amino acids to support muscle repair, strength, and recovery.",
+            "arrow_image": "shopify://shop_images/Vector_3.svg",
+            "position": "left",
+            "image_position": "top"
+          }
+        },
+        "nutrition_item_WYdNHQ": {
+          "type": "nutrition_item",
+          "settings": {
+            "heading": "Organic Agave Inulin",
+            "subheading": "A prebiotic fiber that supports healthy digestion and gut health.",
+            "arrow_image": "shopify://shop_images/Vector_4.svg",
+            "position": "left",
+            "image_position": "bottom"
+          }
+        },
+        "nutrition_item_NE7mkh": {
+          "type": "nutrition_item",
+          "settings": {
+            "heading": "Organic Dates",
+            "subheading": "Whole fruit carbohydrates and fiber for energy with natural sweetness and essential nutrients.",
+            "arrow_image": "shopify://shop_images/Vector_5.svg",
+            "position": "right",
+            "image_position": "top"
+          }
+        },
+        "nutrition_item_AaPjgT": {
+          "type": "nutrition_item",
+          "settings": {
+            "heading": "Raw Texas Honey",
+            "subheading": "Unprocessed to retain natural antioxidants and a richer, more complex flavor.",
+            "arrow_image": "shopify://shop_images/Vector_6.svg",
+            "position": "right",
+            "image_position": "bottom"
+          }
+        },
+        "nutrition_item_hM69hw": {
+          "type": "nutrition_item",
+          "settings": {
+            "heading": "Organic Coconut Oil & Cocoa Butter",
+            "subheading": "Antioxidant‑rich and satiating, providing clean energy without seed oils or animal fats.",
+            "arrow_image": "shopify://shop_images/Vector_7.svg",
+            "position": "right",
+            "image_position": "bottom"
+          }
+        }
+      },
+      "block_order": [
+        "nutrition_item_6FgHgg",
+        "nutrition_item_r6B4nM",
+        "nutrition_item_WYdNHQ",
+        "nutrition_item_NE7mkh",
+        "nutrition_item_AaPjgT",
+        "nutrition_item_hM69hw"
+      ],
+      "name": "Nutrition Section",
+      "settings": {
+        "heading": "REAL INGREDIENTS <em>REAL NUTRITION.</em>",
+        "bg_image_top": "shopify://shop_images/Group_1707479762.svg",
+        "bg_image_bottom": "shopify://shop_images/Frame_2147242548.svg",
+        "background_color": "linear-gradient(186.93deg, rgba(242, 158, 91, 1) 4.32%, rgba(213, 121, 43, 1) 94.58%)",
+        "heading_color": "#152728",
+        "heading_highlight_color": "#fef8ec",
+        "block_heading_color": "#fef8ec",
+        "block_text_color": "#fef8ec",
+        "center_image": "shopify://shop_images/Pngtree_chocolate_donuts_snack_sweet_unhealthy_16014957_1.png",
+        "common_icon": "shopify://shop_images/Mask_group23_1.png",
+        "mobile_top_arrow": "shopify://shop_images/Vector.svg",
+        "mobile_bottom_arrow": "shopify://shop_images/Vector_1.svg",
+        "button_label": "View All Ingredients",
+        "button_link": "#",
+        "button_background_color": "#ffffff",
+        "button_text_color": "#152728",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mob": 40,
+        "padding_bottom_mob": 40
+      }
+    },
     "brave_video_X7qiVL": {
       "type": "brave-video",
       "blocks": {
@@ -329,7 +425,7 @@
         "image": "shopify://shop_images/Frame_2147229813.png",
         "bg_image_top": "shopify://shop_images/Group_1707479762.svg",
         "bg_image_bottom": "shopify://shop_images/Frame_2147242548.svg",
-        "bg_color": "#d5792b",
+        "bg_color": "linear-gradient(186.93deg, rgba(242, 158, 91, 1) 4.32%, rgba(213, 121, 43, 1) 94.58%)",
         "padding_top": 80,
         "padding_bottom": 80,
         "padding_top_mob": 24,
@@ -341,6 +437,7 @@
     "main",
     "related-products",
     "brave_comparison_TRn3KM",
+    "nutrition_section_cmGGYj",
     "brave_video_X7qiVL",
     "richtext_section_Ei8nwa",
     "faq_section_fRQJcB"
