@@ -17,7 +17,7 @@
         "description": "<ul><li>Small-Batch Crafted</li><li>Made in Austin, Texas</li><li>Nothing Artificial</li></ul>",
         "button_label": "Shop Now",
         "button_link": "shopify://collections/all",
-        "image": "shopify://shop_images/Frame.png",
+        "image": "shopify://shop_images/brave-bar-chocolate-protein-bar-_ingredients.jpg",
         "section_bg": "rgba(0,0,0,0)",
         "content_bg": "#f7e4d5",
         "image_wrapper_bg": "#fcf7ec",
@@ -68,6 +68,7 @@
         "title": "Real People Love <em>Real Food</em>",
         "subtitle": "",
         "icon": "shopify://shop_images/Frame_1.svg",
+        "show_pagination": false,
         "mobile_layout": "grid",
         "overlay_opacity": 0.3,
         "section_bg": "#ffffff",
@@ -242,8 +243,8 @@
         "section_bg": "#ffffff",
         "padding_top_desktop": 80,
         "padding_bottom_desktop": 80,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 0
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
       }
     }
   },
